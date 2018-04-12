@@ -58,7 +58,12 @@
 			<artifactId>guava</artifactId>
 			<version>11.0</version>
 		</dependency>
-
+		<!-- 加入微信公众号的SDK依赖 -->
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>2.7.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
