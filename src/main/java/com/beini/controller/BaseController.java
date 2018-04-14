@@ -11,12 +11,9 @@ import com.beini.gen_entity.ProductBrand;
 /**
  * 基本的控制器类
  * @author lb_chen
- *
  */
-
 @RestController
 public class BaseController {
-
 	@GetMapping("/demo")
 	public String demo2(@Valid ProductBrand productBrand, BindingResult result) {
 		StringBuffer bf = new StringBuffer();
