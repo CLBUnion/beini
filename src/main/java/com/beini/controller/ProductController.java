@@ -15,15 +15,24 @@ import com.beini.vo.ProductVo;
 @RequestMapping("/")
 public class ProductController {
 	@Qualifier
-	@Resource(name="productServiceBeiniCache")
+	/* 自定义 的缓存组件 */
+	//@Resource(name="productServiceBeiniCache")
+	/* spring boot data redis 的缓存组件 */
+	@Resource(name = "productService")
 	private ProductService productService;
+
 	@GetMapping("get/{id}")
-	public ProductVo getProduct(@PathVariable(name="id") Integer id) {
+	public ProductVo getProduct(@PathVariable(name = "id") Integer id) {
 		return productService.getProductById(id);
 	}
 
-	@GetMapping("get2/{id}")
-	public String get2(@PathVariable(name="id") Integer id) {
-		return productService.getProductById2(id);
+	@GetMapping("update2/{id}")
+	public ProductVo update2(@PathVariable(name = "id") Integer id) {
+		return productService.updateProductById2(id);
+	}
+
+	@GetMapping("update/{id}")
+	public ProductVo update(@PathVariable(name = "id") Integer id) {
+		return productService.updateProductById(id);
 	}
 }
