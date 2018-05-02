@@ -9,5 +9,4 @@ import com.beini.model.SimpleTable;
 @Mapper
 public interface SimpleTableMapper {
 	int insertBatch(List<SimpleTable> list);
-	
 }

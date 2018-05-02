@@ -5,16 +5,18 @@ import java.util.Date;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.beini.cache.utils.BeiniAllRedisUtil;
+import com.beini.model.SimpleTable;
 import com.beini.thread.SendThread;
 
-@Controller
+@RestController
 public class MQController {
 	@Autowired
 	private SendThread sendThread;
+	
 	@Resource(name = "beiniRedisUtil")
 	private BeiniAllRedisUtil redisUtil;
 
@@ -28,5 +30,10 @@ public class MQController {
 		end = new Date().getTime();
 		System.out.println((end - begin) + "---------------------------------------------------------------- s");
 		return "success";
+	}
+	@GetMapping("/mqtest")
+	public String mqtest() {
+		redisUtil.hset("simpleTable","1", new SimpleTable(1,"张三","zhangsan"));
+		return "mqtest";
 	}
 }
